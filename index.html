@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <!-- Modern Web Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>Expense Tracker</h2>
+        </header>
+
+        <section class="balance-section">
+            <h4>Your Balance</h4>
+            <h1 id="balance">₹0.00</h1>
+        </section>
+
+        <section class="summary-cards">
+            <div class="card income">
+                <h4>Income</h4>
+                <p id="money-plus" class="money plus">+₹0.00</p
+            </div>
+            <div class="card expense">
+                <h4>Expense</h4>
+                <p id="money-minus" class="money minus">-₹0.00</p>
+            </div>
+        </section>
+
+        <section class="transactions-section">
+            <h3>History</h3>
+            <ul id="list" class="list">
+                <!-- Transactions will be dynamically inserted here -->
+            </ul>
+            <p id="empty-state" class="empty-state">No transactions yet.</p>
+        </section>
+
+        <section class="add-transaction-section">
+            <h3>Add New Transaction</h3>
+            <form id="form">
+                <div class="form-control">
+                    <label for="text">Title</label>
+                    <input type="text" id="text" placeholder="e.g. Groceries, Salary..." required />
+                </div>
+                <div class="form-multi-control">
+                    <div class="form-control flex-1">
+                        <label for="type">Type</label>
+                        <select id="type" required>
+                            <option value="" disabled selected>Select...</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-control flex-1">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" placeholder="0.00" required min="0.01" step="0.01" />
+                    </div>
+                </div>
+                <button class="btn" type="submit">Add Transaction</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Ionicons for modern minimal icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Logic Script -->
+    <script src="script.js"></script>
+</body>
+</html>

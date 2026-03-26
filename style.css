@@ -1,0 +1,311 @@
+:root {
+    --bg-color: #f8fafc;
+    --container-bg: #ffffff;
+    --text-color: #1e293b;
+    --text-muted: #64748b;
+    --income-color: #10b981;
+    --income-bg: #d1fae5;
+    --expense-color: #ef4444;
+    --expense-bg: #fee2e2;
+    --border-color: #e2e8f0;
+    --primary-color: #3b82f6;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at top, #e0e7ff 0%, #f8fafc 40%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: var(--container-bg);
+    width: 100%;
+    max-width: 440px;
+    padding: 35px;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+header h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    letter-spacing: -0.5px;
+}
+
+.balance-section {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.balance-section h4 {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.balance-section h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+}
+
+.summary-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.card {
+    flex: 1;
+    background-color: var(--container-bg);
+    padding: 18px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.card h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.card p {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.money.plus {
+    color: var(--income-color);
+}
+
+.money.minus {
+    color: var(--expense-color);
+}
+
+.transactions-section h3, .add-transaction-section h3 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}
+
+.list {
+    list-style-type: none;
+    margin-bottom: 30px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom Scrollbar */
+.list::-webkit-scrollbar {
+    width: 6px;
+}
+.list::-webkit-scrollbar-track {
+    background: transparent;
+}
+.list::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
+
+.list li {
+    background-color: var(--container-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.list li.plus {
+    border-left: 6px solid var(--income-color);
+}
+.list li.plus .transaction-icon {
+    background-color: var(--income-bg);
+    color: var(--income-color);
+}
+
+.list li.minus {
+    border-left: 6px solid var(--expense-color);
+}
+.list li.minus .transaction-icon {
+    background-color: var(--expense-bg);
+    color: var(--expense-color);
+}
+
+.list li .transaction-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.list li .transaction-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+}
+
+.list li .transaction-amount {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.list li.plus .transaction-amount { color: var(--income-color); }
+.list li.minus .transaction-amount { color: var(--expense-color); }
+
+
+.delete-btn {
+    cursor: pointer;
+    background-color: #fef2f2;
+    border: none;
+    color: #ef4444;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.list li:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin: 40px 0;
+    display: none;
+}
+
+.form-control {
+    margin-bottom: 18px;
+}
+
+.form-multi-control {
+    display: flex;
+    gap: 15px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-color);
+}
+
+.form-control input, .form-control select {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.form-control input:focus, .form-control select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: var(--container-bg);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.btn {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 25px;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #2563eb;
+    box-shadow: 0 6px 10px -1px rgba(59, 130, 246, 0.4);
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px -1px rgba(59, 130, 246, 0.3);
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 20px;
+        border-radius: 20px;
+    }
+    .balance-section h1 {
+        font-size: 2.2rem;
+    }
+    .delete-btn {
+        opacity: 1; /* Always visible on mobile */
+    }
+}
